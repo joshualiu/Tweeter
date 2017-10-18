@@ -24,3 +24,16 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+body .container {
+  width: 450px;
+  margin: auto;
+  box-sizing: border-box;
+  background-color: white;
+  position: relative;
+  top: 80px;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 20px;
+}
+

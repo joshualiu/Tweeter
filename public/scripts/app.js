@@ -98,6 +98,15 @@ var data = [
   }
 ];
 
+
+
+
+function escape(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 function renderTweets(tweets) {
   // loops through tweets
     // calls createTweetElement for each tweet

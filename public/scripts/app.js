@@ -113,25 +113,6 @@ $(document).ready(function() {
 
   loadTweets();
 
-
-
-function escape(str) {
-  let div = document.createElement('div');
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-}
-
-function renderTweets(tweets) {
-  // loops through tweets
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
-  $("#new-section").empty();
-  tweets.forEach(function(tweet) {
-    $('#new-section').prepend(createTweetElement(tweet));
- });
-
-}
-
   function createTweetElement(input) {
 
     return `
@@ -160,4 +141,69 @@ function renderTweets(tweets) {
   `;
   }
 
+
+function escape(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
 }
+
+function renderTweets(tweets) {
+  // loops through tweets
+    // calls createTweetElement for each tweet
+    // takes return value and appends it to the tweets container
+  $("#new-section").empty();
+  tweets.forEach(function(tweet) {
+    $('#new-section').prepend(createTweetElement(tweet));
+ });
+
+}
+
+
+
+
+
+
+
+
+  let inputval = '';
+  let count1 = 0;
+
+  $("textarea").keyup(function() {
+    inputval = String(this.value);
+    count1 = (inputval.replace(/[\s\r]/g, "")).length;
+  });
+
+
+  $("#post-tweet").submit(function(event) {
+    event.preventDefault();
+    // console.log(count1, inputval);
+    if(count1 >140) {
+      $(this).each(function() {
+        // $('#input').prop('disabled', true).css('opacity', 0.5);
+        alert("Sorry, the content is too long (>140)!!");
+      });
+    }
+    else if (count1 === 0) {
+        $(this).each(function() {
+          alert("Sorry, the content could not be empty!!");
+        });
+    } else {
+      $.ajax({
+          type: 'POST',
+          url: '/tweets',
+          data: $(this).serialize(),
+          success: function(data) {
+            loadTweets();
+          }
+        });
+      $(this).trigger("reset");
+      $(this).find(".counter").text('140');
+      }
+  });
+
+
+
+
+
+});

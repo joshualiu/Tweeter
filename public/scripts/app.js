@@ -161,9 +161,15 @@ function renderTweets(tweets) {
 
 
 
-
-
-
+  $("#toggle").click(function() {
+    if($(".new-tweet").is(":visible")) {
+      $(".new-tweet").slideUp();
+    } else {
+      $(".new-tweet").slideDown(function() {
+        $("textarea").focus();
+      });
+    }
+  })
 
 
   let inputval = '';
@@ -201,8 +207,6 @@ function renderTweets(tweets) {
       $(this).find(".counter").text('140');
       }
   });
-
-
 
 
 

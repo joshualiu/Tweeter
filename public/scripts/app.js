@@ -87,7 +87,7 @@ $(document).ready(function() {
   }
 
 
-  //
+  // Function: fetching tweets from /tweets page using /GET function in AJAX.
   function loadTweets() {
     $.ajax({
       url: '/tweets',
@@ -112,40 +112,39 @@ $(document).ready(function() {
   })
 
 
-  let inputval = '';
-  let count1 = 0;
+  let inputval = '';            // create a variable to save the input tweet.
+  let countval = 0;             // create a variable to save the count characters in the tweet.
 
   $("textarea").keyup(function() {
     inputval = String(this.value);
-    count1 = (inputval.replace(/[\s\r]/g, "")).length;
+    countval = (inputval.replace(/[\s\r]/g, "")).length;
+    // .replace() use regular expression to delete all whitespace character (space, tap,
+    // newline, etc.) before a non whitespace character, and count the length of it.
   });
 
 
   $("#post-tweet").submit(function(event) {
-    event.preventDefault();
-    // console.log(count1, inputval);
-    if(count1 >140) {
+    event.preventDefault();                                 // prevent the default behaviour to leave the page
+    if(countval >140) {                                     // verify if the input is over limit, >140 characters
       $(this).each(function() {
-        // $('#input').prop('disabled', true).css('opacity', 0.5);
         alert("Sorry, the content is too long (>140)!!");
       });
-    }
-    else if (count1 === 0) {
+    } else if (countval === 0) {                            // verify if the input is empty, or just whitespace characters
         $(this).each(function() {
           alert("Sorry, the content could not be empty!!");
         });
     } else {
       $.ajax({
-          type: 'POST',
-          url: '/tweets',
-          data: $(this).serialize(),
-          success: function(data) {
-            loadTweets();
-          }
-        });
+        type: 'POST',
+        url: '/tweets',
+        data: $(this).serialize(),
+        success: function(data) {
+          loadTweets();
+        }
+      });
       $(this).trigger("reset");
       $(this).find(".counter").text('140');
-      }
+    }
   });
 
 });

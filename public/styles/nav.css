@@ -10,6 +10,7 @@
   padding-bottom: 0;
   z-index:1000;
   top:0;
+  min-width: 420px;
 }
 
 #nav-bar .logo {

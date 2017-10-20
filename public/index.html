@@ -13,6 +13,12 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
+    <!-- nav.css -->
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+
+    <!-- new-tweet.css -->
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
@@ -25,12 +31,23 @@
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png" width="80px" height="80px">
-      <span class="header">Tweeeeter</span>
+      <span class="header">Tweeter</span>
     </nav>
 
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <main class="container" id="tweets-container">
+
+      <section class="new-tweet">
+        <h2 id="compose">Compose Tweet</h2>
+        <form id="post-tweet" method="post" action="/tweets">
+          <textarea name="text" placeholder="What are you humming about?"></textarea>
+          <input type="submit" value="Tweet" id="input">
+          <span class="counter">140</span>
+        </form>
+      </section>
+
+      <p>Hello!!!!<br><br><br><br>hiiiii<br>
     </main>
-  <p>Hello!!!!<br><br><br><br>hiiiii<br>
+  Hello!!!!<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>hiiiii<br>
   </body>
 </html>

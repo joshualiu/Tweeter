@@ -1,0 +1,46 @@
+.new-tweet{
+  box-sizing: border-box;
+  background-color: #EFEFEF;
+  border-radius:5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgrey;
+}
+
+.new-tweet h2 {
+  box-sizing: border-box;
+  margin-right:10px;
+  margin-left:10px;
+  border-bottom:1px solid black;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.new-tweet form {
+  box-sizing: border-box;
+  margin-right:10px;
+  margin-left:10px;
+  margin-bottom:10px;
+}
+
+.new-tweet input {
+  margin-top: 3px;
+}
+
+.counter {
+  box-sizing: border-box;
+  float: right;
+  padding-right: 3%;
+  padding-top: 5px;
+  font-size: 75%;
+}
+
+.reach-limit {
+  color: red;
+}
+
+.new-tweet form textarea {
+  width: 100%;
+  padding-left: 2%;
+  padding-right: 1%;
+}

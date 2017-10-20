@@ -4,69 +4,53 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-function calculateSince(datetime)
-{
-  var tTime=new Date(datetime);
-  var cTime=new Date();
-  var sinceMin=Math.round((cTime-tTime)/60000);
-  if(sinceMin==0)
-  {
-      var sinceSec=Math.round((cTime-tTime)/1000);
-      if(sinceSec<10)
-        var since='less than 10 seconds ago';
-      else if(sinceSec<20)
-        var since='less than 20 seconds ago';
-      else
-        var since='half a minute ago';
-  }
-  else if(sinceMin==1)
-  {
-      var sinceSec=Math.round((cTime-tTime)/1000);
-      if(sinceSec==30)
-        var since='half a minute ago';
-      else if(sinceSec<60)
-        var since='less than a minute ago';
-      else
-        var since='1 minute ago';
-  }
-  else if(sinceMin<45)
-      var since=sinceMin+' minutes ago';
-  else if(sinceMin>44&&sinceMin<60)
-      var since='about 1 hour ago';
-  else if(sinceMin<1440){
-      var sinceHr=Math.round(sinceMin/60);
-  if(sinceHr==1)
-    var since='about 1 hour ago';
-  else
-    var since='about '+sinceHr+' hours ago';
-  }
-  else if(sinceMin>1439&&sinceMin<2880)
-      var since='1 day ago';
-  else
-  {
-      var sinceDay=Math.round(sinceMin/1440);
-      var since=sinceDay+' days ago';
-  }
-  return since;
-};
 
+// Function: calculate how long ago the tweet was created:
+function parseHumanDate(timeCreated) {
+  let created = new Date(timeCreated);
+  let seconds = Math.floor((Date.now() - created) / 1000);
+  let interval = Math.floor(seconds / 31536000);
+
+  if (interval > 1) {
+      return interval + ' years';
+  }
+  interval = Math.floor(seconds / 2592000);
+  if (interval > 1) {
+      return interval + ' months';
+  }
+  interval = Math.floor(seconds / 86400);
+  if (interval > 1) {
+      return interval + ' days';
+  }
+  interval = Math.floor(seconds / 3600);
+  if (interval > 1) {
+      return interval + ' hours';
+  }
+  interval = Math.floor(seconds / 60);
+  if (interval > 1) {
+      return interval + ' minutes';
+  }
+  return Math.floor(seconds) + ' seconds';
+}
+
+// Function: a escape function to prevent Cross-Site Scripting:
+function escape(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
+
+
+
+
+
+// jQuery:
 $(document).ready(function() {
 
-  function loadTweets() {
-    $.ajax({
-      url: '/tweets',
-      type: 'GET',
-      success: function (data) {
-        renderTweets(data);
-        // console.log("success");
-      }
-    });
-  }
 
-  loadTweets();
-
+  // Function: take in a tweet object and return it in HTML:
   function createTweetElement(input) {
-
     return `
     <section class="all-tweets" id="tweets-hover">
       <header class="header">
@@ -80,7 +64,7 @@ $(document).ready(function() {
       </article>
 
       <footer class="footer">
-          ${escape(calculateSince(input.created_at))}
+          ${escape(parseHumanDate(input.created_at))}
         <a class="icon">
           <i class="fa fa-flag" aria-hidden="true"></i>
           <i class="fa fa-retweet" aria-hidden="true"></i>
@@ -89,27 +73,32 @@ $(document).ready(function() {
       </footer>
 
     </section>
-    <br>
-  `;
+    <br>`;
   }
 
 
-  function escape(str) {
-    let div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  }
-
+  // Function: taking in an array of tweet objects
+  //           and appending each one to the #new-section in HTML
   function renderTweets(tweets) {
-    // loops through tweets
-      // calls createTweetElement for each tweet
-      // takes return value and appends it to the tweets container
     $("#new-section").empty();
     tweets.forEach(function(tweet) {
       $('#new-section').prepend(createTweetElement(tweet));
    });
   }
 
+
+  //
+  function loadTweets() {
+    $.ajax({
+      url: '/tweets',
+      type: 'GET',
+      success: function (data) {
+        renderTweets(data);
+      }
+    });
+  }
+
+  loadTweets();
 
 
   $("#toggle").click(function() {

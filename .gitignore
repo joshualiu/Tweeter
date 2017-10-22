@@ -67,3 +67,6 @@ typings/
 
 # My own test file
 test.js
+
+# CSS backup folder
+backup/

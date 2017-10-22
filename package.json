@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
-    "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js"
+    "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js",
+    "compile-sass": "./node_modules/node-sass/bin/node-sass --watch --recursive --output public/css stylesheets"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
@@ -15,7 +16,9 @@
     "chance": "^1.0.2",
     "express": "^4.13.4",
     "md5": "^2.1.0",
-    "mongodb": "^2.2.33"
+    "mongodb": "^2.2.33",
+    "node-sass-middleware": "^0.11.0",
+    "node-sass": "^4.5.3"
   },
   "devDependencies": {
     "nodemon": "^1.9.2"

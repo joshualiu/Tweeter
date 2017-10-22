@@ -1,3 +1,32 @@
-body {
-  background-color: black;
+html {
+  box-sizing: border-box;
 }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*
+ * Global layout stuff
+ */
+
+body {
+  margin: 0;
+  color: #244751;
+  background-color: #eee;
+  font-family: 'Roboto Condensed', sans-serif;
+  .container {
+    width: 450px;
+    margin: auto;
+    position: relative;
+    background-color: white;
+    margin-top: 80px;
+    padding: 20px 2em 0px 2em;
+  }
+}
+
+/*
+ * Additional CSS can be defined below or in other CSS files, as per instructions
+ */
+
+
+

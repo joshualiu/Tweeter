@@ -1,0 +1,22 @@
+.new-tweet {
+  background-color: #EFEFEF;
+  border-radius: 5px;
+  border: 1px solid lightgrey; }
+  .new-tweet h2 {
+    border-bottom: 1px solid black;
+    margin: 10px 10px 25px 10px; }
+  .new-tweet form {
+    margin: 0 10px 10px 10px; }
+  .new-tweet input {
+    margin-top: 3px; }
+  .new-tweet .counter {
+    float: right;
+    padding-right: 1%;
+    padding-top: 5px;
+    font-size: 75%; }
+  .new-tweet .reach-limit {
+    color: red; }
+  .new-tweet form textarea {
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 1%; }

@@ -11,7 +11,6 @@ const sassMiddleware = require('node-sass-middleware')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-
 app.use(sassMiddleware({
   src: './stylesheets', // Location of SASS files
   dest: './public/css', // Compiled CSS location

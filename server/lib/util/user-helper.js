@@ -37,7 +37,8 @@ module.exports = {
     return {
       name: userName,
       handle: userHandle,
-      avatars: avatars
+      avatars: avatars,
+      tweetlike: { flag: 0 }
     };
   }
 };

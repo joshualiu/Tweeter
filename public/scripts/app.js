@@ -33,12 +33,6 @@ function parseHumanDate(timeCreated) {
   return Math.floor(seconds) + ' seconds';
 }
 
-// Function: a escape function to prevent Cross-Site Scripting:
-function escape(str) {
-  let div = document.createElement('div');
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-}
 
 
 
@@ -47,6 +41,13 @@ function escape(str) {
 
 // jQuery:
 $(document).ready(function() {
+
+// Function: a escape function to prevent Cross-Site Scripting:
+function escape(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 
 
   // Function: take in a tweet object and return it in HTML:
@@ -66,15 +67,39 @@ $(document).ready(function() {
       <footer class="footer">
           ${escape(parseHumanDate(input.created_at))}
         <a class="icon">
-          <i class="fa fa-flag" aria-hidden="true"></i>
-          <i class="fa fa-retweet" aria-hidden="true"></i>
-          <i class="fa fa-heart" aria-hidden="true"></i>
+          <i class="fa fa-flag" data-flag="${escape(input.user.tweetlike.flag)}" aria-hidden="true"></i>
+          <i class="fa fa-retweet retweet" aria-hidden="true"></i>
+          <i class="fa fa-heart heart" aria-hidden="true"></i>
         </a>
       </footer>
 
     </section>
     <br>`;
   }
+
+
+// function createTweetElement1(input) {
+//   const $section = $("<section>").addClass("all-tweets").attr("id", "tweets-hover");
+//   const $header = $("<header>").addClass("header")
+//     $header.append($("<img>").addClass("pic").attr("src", `${escape(input.user.avatars.small)}`));
+//     $header.append($("<h2>").addClass("tweets-h2").text(`${escape(input.user.name)}`));
+//     $header.append($("<a>").addClass("tweeter-name").text(`${escape(input.user.handle)}`));
+
+//   const $article = $("<article>").addClass("tweet").text(`${escape(input.content.text)}`);
+
+//   const $icon = $("<a>").addClass("icon")
+//     $icon.append($(`<i class="fa fa-flag flag" data-flag="${escape(input.user.tweetlike.flag)}" aria-hidden="true"></i>`));
+//     $icon.append($(`<i class="fa fa-retweet retweet" aria-hidden="true"></i>`));
+//     $icon.append($(`<i class="fa fa-heart heart" aria-hidden="true"></i>`));
+
+//   const $footer = $("<footer>").addClass("footer").text(`${escape(parseHumanDate(input.created_at))}`).append($icon);
+
+
+//   $section.append($header).append($article).append($footer);
+
+
+//   return $section;
+// }
 
 
   // Function: taking in an array of tweet objects
@@ -112,6 +137,8 @@ $(document).ready(function() {
   })
 
 
+
+
   let inputval = '';            // create a variable to save the input tweet.
   let countval = 0;             // create a variable to save the count characters in the tweet.
 
@@ -146,5 +173,7 @@ $(document).ready(function() {
       $(this).find(".counter").text('140');
     }
   });
+
+
 
 });

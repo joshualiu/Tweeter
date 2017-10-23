@@ -7,7 +7,8 @@
         "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
         "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
       },
-      "handle": "@SirIsaac"
+      "handle": "@SirIsaac",
+      "tweetlike": { "flag": 0}
     },
     "content": {
       "text": "If I have seen further it is by standing on the shoulders of giants"

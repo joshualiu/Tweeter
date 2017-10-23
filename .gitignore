@@ -70,3 +70,6 @@ test.js
 
 # CSS backup folder
 backup/
+
+# switch to SASS, remove untrack scripts folder
+public/styles

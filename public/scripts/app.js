@@ -41,10 +41,6 @@ function escape(str) {
 }
 
 
-
-
-
-
 // jQuery:
 $(document).ready(function() {
 
@@ -101,6 +97,10 @@ $(document).ready(function() {
   loadTweets();
 
 
+
+
+  // jQuery selector: Toggle implementation - control the slide down
+  //                  and slide up of creating new tweet form on clicking.
   $("#toggle").click(function() {
     if($(".new-tweet").is(":visible")) {
       $(".new-tweet").slideUp();
@@ -110,6 +110,10 @@ $(document).ready(function() {
       });
     }
   })
+
+
+
+
 
 
   let inputval = '';            // create a variable to save the input tweet.
@@ -123,6 +127,7 @@ $(document).ready(function() {
   });
 
 
+  // Form validation:
   $("#post-tweet").submit(function(event) {
     event.preventDefault();                                 // prevent the default behaviour to leave the page
     if(countval >140) {                                     // verify if the input is over limit, >140 characters

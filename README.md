@@ -8,7 +8,7 @@ Takes up w3d1-w3d5 @lighthouse lab
 
 ## Final Product
 
-
+![""](https://github.com/zhonghaoliu/tweeter/blob/master/docs/tweeter-main.png?raw=true)
 
 ## Getting Started
 

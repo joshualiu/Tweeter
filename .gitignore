@@ -73,3 +73,5 @@ backup/
 
 # switch to SASS, remove untrack scripts folder
 public/styles
+
+.env

@@ -39,7 +39,7 @@ MongoClient.connect(
     const tweetsRoutes = require("./routes/tweets")(DataHelpers);
     app.use("/tweets", tweetsRoutes);
 
-    app.listen(PORT, () => {
+    app.listen(process.env.PORT || 3000, () => {
       console.log("Example app listening on port " + PORT);
     });
   }

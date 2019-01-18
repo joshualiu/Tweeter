@@ -2,7 +2,6 @@
 
 // Basic express setup:
 require('dotenv').config()
-const PORT = 8080;
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();

@@ -23,5 +23,6 @@
   },
   "devDependencies": {
     "nodemon": "^1.9.2"
-  }
+  },
+  "heroku-run-build-script": true
 }
